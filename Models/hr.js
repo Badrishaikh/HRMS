@@ -16,9 +16,12 @@ const UserSchema= new  mongoose.Schema({
     addres:{
         type:String
     },
-    cId:{
+    is_hr:{
         type:String
     },
+    cId:{
+      type:String
+  },
     cHR:{
         type:Boolean,
         default:true

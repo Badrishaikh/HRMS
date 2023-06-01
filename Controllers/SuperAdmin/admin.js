@@ -1,6 +1,6 @@
-import userModel from "../Models/user.js";
+import userModel from "../../Models/admin.js";
 import jwt from "jsonwebtoken";
-export const HRMSreg = async (req, res) => {
+export const registerHRMS = async (req, res) => {
   const {email,password } = req.body
   console.log(req.body)
   if (!email || !password) {
@@ -33,7 +33,7 @@ export const HRMSreg = async (req, res) => {
 };
 
 
-export const HRMSlogin = async (req, res) => {
+export const loginHRMS = async (req, res) => {
   const {email,password } = req.body;
   if (!email || !password) {
     return res
@@ -56,7 +56,7 @@ export const HRMSlogin = async (req, res) => {
      
     const token= jwt.sign({
       id:user._id,
-      hrms:user.hrms
+      is_hrms:user.is_hrms
 
      },"badri")
      res.status(200).json({token, user})

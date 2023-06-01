@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
-import userModel from "../Models/cmp_profile_create.js";
-import {validateAuthKey,validateAdmin} from '../middleware/auth.js';
-export const Company =[
+import cmpModel from "../../Models/cmp_profile_create.js";
+import {validateAuthKey,validateAdmin} from '../../middleware/auth.js';
+export const createCompany =[
   validateAdmin,
   async(req, res) => {
     const {company_name,email,password,contact_no,addres} = req.body
@@ -11,12 +11,12 @@ export const Company =[
       return res.status(401).json({ message: "All fields are mandatory" });
   
     }
-    const userExist = await userModel.findOne({ company_name });
+    const userExist = await cmpModel.findOne({ company_name });
     if (userExist) {
   
       return res.json({ message: "email id already exists" });
     }
-    const user = await userModel.create({company_name, email,password,contact_no,addres });
+    const user = await cmpModel.create({company_name, email,password,contact_no,addres });
   
     if (user) {
       // await sendTokenResponse(user, res);
@@ -37,12 +37,12 @@ export const Company =[
       throw new Error("User Not Found");
     }
   }];
-  export const Allcmp =[
+  export const getAllcmp =[
     validateAdmin,
      async (req, res) => {
     
       try {
-        const results = await userModel.find({});
+        const results = await cmpModel.find({});
        if(results){
         return res.json(results)
        }
@@ -52,7 +52,7 @@ export const Company =[
    
     }]
 
-    export const companyAdminlogin = async (req, res) => {
+    export const companyAdminLogin = async (req, res) => {
       const {email,password } = req.body;
       if (!email || !password) {
         return res
@@ -60,7 +60,7 @@ export const Company =[
           .json({ success: false, msg: "Required field is missing" });
       }
       try {
-       var user = await userModel.findOne({email}).select("+password");
+       var user = await cmpModel.findOne({email}).select("+password");
        console.log(user)
         if (!user) {
          

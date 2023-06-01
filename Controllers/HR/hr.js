@@ -1,9 +1,9 @@
 import jwt from "jsonwebtoken";
 import fs from "fs";
 import path from "path";
-import userModel from "../Models/hr.js";
-import {validateAuthKey,validateAdmin} from '../middleware/auth.js';
-export const HR =[
+import hrModel from "../../Models/hr.js";
+import {validateAuthKey,validateAdmin} from '../../middleware/auth.js';
+export const create =[
     validateAuthKey,
     async(req, res) => {
      const { id } = req.user;
@@ -16,12 +16,12 @@ try {
         return res.status(401).json({ message: "All fields are mandatory" });
     
       }
-      const userExist = await userModel.findOne({email});
+      const userExist = await hrModel.findOne({email});
       if (userExist) {
     
         return res.json({ message: "email id already exists" });
       }
-      const user = await userModel.create({name, email,password,contact_no,addres,cId:id });
+      const user = await hrModel.create({name, email,password,contact_no,addres,cId:id });
     
       if (user) {
       
@@ -43,7 +43,7 @@ try {
     
     }];
 
-    export const HRlogin = async (req, res) => {
+    export const login = async (req, res) => {
         const {email,password } = req.body;
         if (!email || !password) {
           return res
@@ -51,7 +51,7 @@ try {
             .json({ success: false, msg: "Required field is missing" });
         }
         try {
-         var user = await userModel.findOne({email}).select("+password");
+         var user = await hrModel.findOne({email}).select("+password");
          console.log(user)
           if (!user) {
            
@@ -70,8 +70,8 @@ try {
            
           const token= jwt.sign({
             id:user._id,
-           
-      
+            is_hr:user.is_hr,
+            cId:user.cId
            },process.env.SECRET_KEY)
            res.status(200).json({token, user})
          // await sendTokenResponse(user, res);
@@ -83,7 +83,7 @@ try {
         }
       };    
 
-      export const HRavatar =[
+      export const profilepic =[
         validateAuthKey,
         async(req, res) => {
          const { id } = req.user;
@@ -99,7 +99,7 @@ try {
         const fileUrl = path.join(req.file.filename);
         console.log(fileUrl)
   
-        const user = await userModel.findByIdAndUpdate(id, {
+        const user = await hrModel.findByIdAndUpdate(id, {
           avatar: fileUrl,
         },{new:true});
   

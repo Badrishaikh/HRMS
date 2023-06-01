@@ -81,7 +81,7 @@ const decodeKey = (key) => {
         .then((decoded) => {
           if (!decoded || !decoded.id)
             return res.status(401).json({ error: "Invalid auth key " });
-          if (!decoded.hrms) {
+          if (!decoded.is_hrms) {
             return res
               .status(401)
               .json({ error: "NOT AUTHORIZED IN THIS ROUTE" });

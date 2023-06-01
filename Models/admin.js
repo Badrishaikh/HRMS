@@ -6,7 +6,7 @@ const UserSchema= new  mongoose.Schema({
       password:{
         type:String
     },
-    hrms:{
+    is_hrms:{
         type:Boolean,
         default:true
     },
