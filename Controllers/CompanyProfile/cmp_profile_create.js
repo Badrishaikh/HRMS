@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
 import cmpModel from "../../Models/cmp_profile_create.js";
+import empModel from "../../Models/employee.js";
+import hrModel from "../../Models/hr.js";
 import {validateAuthKey,validateAdmin} from '../../middleware/auth.js';
 export const createCompany =[
   validateAdmin,
@@ -91,4 +93,89 @@ export const createCompany =[
           .json({ success: false, msg: "Opps something went wrong!!" });
       }
     };
+
+    export const getProfile = [
+      validateAuthKey,
+      async (req, res) => {
+      //const id = req.body.userid;
+      const { id } = req.user;
+      console.log(id)
+    try {
+        const results = await cmpModel.find({_id:id});
+        console.log(results)
+        if(results){
+          return res.json({results})
+        }
+       
+      } catch (err) {
+        throw err;
+      }
+    ;
+    }];   
+   export const getAllEmp = [
+      validateAuthKey,
+      async (req, res) => {
+      //const id = req.body.userid;
+      const { id } = req.user;
+      console.log(id)
+    try {
+        const results = await empModel.find({cId:id});
+        console.log(results)
+        if(results){
+          return res.json({results})
+        }
+       
+      } catch (err) {
+        throw err;
+      }
+    ;
+   }];   
+   export const getAllHr = [
+    validateAuthKey,
+    async (req, res) => {
+    //const id = req.body.userid;
+    const { id } = req.user;
+    console.log(id)
+  try {
+      const results = await hrModel.find({cId:id});
+      console.log(results)
+      if(results){
+        return res.json({results})
+      }
+     
+    } catch (err) {
+      throw err;
+    }
+  ;
+ }];  
+ 
+ export const viewEmp=async (req, res) => {
+   const id= req.params.id
+     try {
+     
+      const results = await empModel.find({_id:id})
+      if(results){
+        return res.json({results})
+      }
+    
+    } catch (err) {
+      throw err;
+    }
    
+  
+};
+export const viewHr=async (req, res) => {
+  const id= req.params.id
+    try {
+    
+     const results = await hrModel.find({_id:id})
+     if(results){
+       return res.json({results})
+     }
+   
+   } catch (err) {
+     throw err;
+   }
+  ;
+ 
+};

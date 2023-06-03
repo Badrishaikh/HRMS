@@ -17,9 +17,12 @@ mongoose
     // useCreateIndex: true,
     // useFindAndModify: false,
   })
+ 
   .then((res) => console.log("Connected to the DB"))
   .catch((err) => console.log("error while connecting to db: ", err));
- 
+  app.use("*",function(req,res){
+    res.send("this route is not found")
+  })
 app.listen(9090,()=>{
  console.log("server connected")
 })

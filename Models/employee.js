@@ -19,6 +19,10 @@ const UserSchema = new mongoose.Schema({
   cId: {
     type: String
   },
+//   cId: {
+//     type: mongoose.Schema.Types.ObjectId,
+//     ref: "company"
+//  },
   empId: {
     type: String
   },
