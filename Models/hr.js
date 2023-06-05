@@ -19,9 +19,13 @@ const UserSchema= new  mongoose.Schema({
     is_hr:{
         type:String
     },
-    cId:{
-      type:String
-  },
+  //   cId:{
+  //     type:String
+  // },
+      cId: {
+     type: mongoose.Schema.Types.ObjectId,
+     ref: "company"
+    },
     cHR:{
         type:Boolean,
         default:true

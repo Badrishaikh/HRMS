@@ -212,7 +212,7 @@ export const panCardUpload = [
   validateAuthKey,
   async (req, res) => {
     const { id } = req.user;
-    console.log(id)
+    console.log(req.user,"kkkkk")
     try {
 
       //  const existsUser = await userModel.findById(id);
