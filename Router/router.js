@@ -4,6 +4,8 @@ import * as companyCtrl from "../Controllers/CompanyProfile/cmp_profile_create.j
 import * as hrCtrl from "../Controllers/HR/hr.js";
 import * as empCtrl from "../Controllers/Employee/employee.js";
 import * as holidayCtrl from "../Controllers/Holiday/holiday.js";
+import  * as settingCtrl from "../Controllers/Settings/setting.js";
+import  * as leavegCtrl from "../Controllers/Leave/leave.js"
 import upload from "../multer.js"
 const Router= express.Router();
 Router.post("/admin-register", adminCtrl.registerHRMS);
@@ -41,6 +43,14 @@ Router.put("/employee-profilepic",upload.single("image"), empCtrl.profilepic);
 Router.put("/cancel-cheque-emp",upload.single("cheque"), empCtrl.chequeUplod);
 Router.put("/pan-card-emp",upload.single("pancard"), empCtrl.panCardUpload);
 Router.put("/update-employee", empCtrl.EmpUpdate);
-Router.post("/leave-emp", empCtrl.leave);
+// Router.post("/leave-emp", empCtrl.leave);
+
+//-----sandwichLeave-------
+Router.post("/sandwich-leave-setting", settingCtrl.createSandwichLeave);
+//-----leave--------
+Router.post("/leave-emp", leavegCtrl.leave);
+Router.post("/leave-half", leavegCtrl.leave1);
+
+
 export default Router;
 

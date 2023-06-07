@@ -12,6 +12,9 @@ const UserSchema= new  mongoose.Schema({
   reasonforLeave: {
      type:String 
     },
+    numOfDays: {
+      type:Number 
+     }, 
   status: {
      type: String,
      default:"pending",
