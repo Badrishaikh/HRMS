@@ -1,44 +1,33 @@
-import jwt from "jsonwebtoken";
+import jwt  from "jsonwebtoken";
+// const { HRMS_JWT_SECRECT } = require("../Utils/config");
 
-// const verifyToken = (req, res, next) => {
-//     const authHeader = req.headers.token;
-//     if (authHeader) {
-//       const token = authHeader.split(" ")[1];
-//       jwt.verify(token, "badri", (err, user) => {
-//         if (err) res.status(403).json("Token is not valid!");
-//         req.user = user;
-//         console.log(req.user)
-//         next();
-//       });
-//     } else {
-//       return res.status(401).json("You are not authenticated!");
+// module.exports.verifyUserJwtToken = (req, res, next) => {
+//     var token;
+//     if ('authorization' in req.headers) {
+//         const { authorization } = req.headers;
+//         token = authorization;
 //     }
-//   };
-  
-//   const verifyTokenAndAuthorization = (req, res, next) => {
-//     verifyToken(req, res, () => {
-//       if (req.user.id === req.params.id || req.user.isAdmin) {
-//         next();
-//       } else {
-//         res.status(403).json("You are not alowed to do that!");
-//       }
-//     });
-//   };
-  
-//   const verifyTokenAndAdmin = (req, res, next) => {
-//     verifyToken(req, res, () => {
-//       if (req.user.hrms) {
-//         console.log(req.user.hrms)
-//         next();
-//       } else {
-//         res.status(403).json(" 456 You are not alowed to do that!");
-//       }
-//     });
-//   };
-//export{ verifyToken,verifyTokenAndAdmin};
+
+//     if (!token)
+//         return res.status(403).send({ status: "error", message: 'No token provided.' });
+//     else {
+//         jwt.verify(token, HRMS_JWT_SECRECT,
+//             (err, decoded) => {
+//                 if (err)
+//                     return res.status(403).send({ status: "error", message: 'Token authentication failed.', });
+//                 else {
+//                     req.tokenUser = decoded;
+//                     next();
+//                 }
+//             }
+//         )
+//     }
+// }
+
+
 const decodeKey = (key) => {
     return new Promise((resolve, reject) => {
-      jwt.verify(key, "badri", (err, decoded) => {
+      jwt.verify(key, process.env.SECRET_KEY, (err, decoded) => {
         if (err || !decoded) return reject(false);
   
         resolve(decoded);
@@ -97,4 +86,3 @@ const decodeKey = (key) => {
       return res.status(401).json({ error: "Invalid auth key" });
     }
   }
- // export{ verifyToken,verifyTokenAndAdmin};
