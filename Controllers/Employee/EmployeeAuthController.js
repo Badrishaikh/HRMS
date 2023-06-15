@@ -387,10 +387,10 @@ export const getAttendance = [
             timeStamp = results[results.length - 1].createdAt;
           }
           let workingHours = calculateTimeDiff(new Date(element.createdAt), timeStamp);
-          element.createdAt = moment(element.createdAt);
-          element.updatedAt = moment(element.updatedAt);
-          element.endTime = moment(timeStamp);
-          relustObj.push({...element,timeSpent:workingHours, endTime: timeStamp})
+          element.createdAt = moment(element.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+          element.updatedAt = moment(element.updatedAt).format('MMMM Do YYYY, h:mm:ss a');
+          element.endTime = moment(timeStamp).format('MMMM Do YYYY, h:mm:ss a');
+          relustObj.push({...element,timeSpent:workingHours})
           console.log("hello");
         }else if (element.entryType == "BreakON") {
           let timeStamp = new Date();
@@ -399,10 +399,10 @@ export const getAttendance = [
             timeStamp = results[i+1].createdAt;
           }
           let workingHours = calculateTimeDiff(new Date(element.createdAt), timeStamp);
-          element.createdAt = moment(element.createdAt);
-          element.updatedAt = moment(element.updatedAt);
-          element.endTime = moment(timeStamp);
-          relustObj.push({...element,timeSpent:workingHours, endTime: timeStamp })
+          element.createdAt = moment(element.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+          element.updatedAt = moment(element.updatedAt).format('MMMM Do YYYY, h:mm:ss a');
+          element.endTime = moment(timeStamp).format('MMMM Do YYYY, h:mm:ss a');
+          relustObj.push({...element,timeSpent:workingHours })
           console.log("hello");
         }
         else if (element.entryType == "LunchON") {
@@ -412,10 +412,10 @@ export const getAttendance = [
             timeStamp = results[i+1].createdAt;
           }
           let workingHours = calculateTimeDiff(new Date(element.createdAt), timeStamp);
-          element.createdAt = moment(element.createdAt);
-          element.updatedAt = moment(element.updatedAt);
-          element.endTime = moment(timeStamp);
-          relustObj.push({...element,timeSpent:workingHours, endTime: timeStamp })
+          element.createdAt = moment(element.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+          element.updatedAt = moment(element.updatedAt).format('MMMM Do YYYY, h:mm:ss a');
+          element.endTime = moment(timeStamp).format('MMMM Do YYYY, h:mm:ss a');
+          relustObj.push({...element,timeSpent:workingHours })
           console.log("hello");
         }else if (element.entryType == "OfficeOFF") {
           let timeStamp = new Date();
@@ -424,9 +424,9 @@ export const getAttendance = [
           }
          
           let workingHours = calculateTimeDiff(timeStamp,new Date(element.createdAt));
-          element.createdAt = moment(element.createdAt);
-          element.updatedAt = moment(element.updatedAt);
-          element.endTime = moment(timeStamp);
+          element.createdAt = moment(element.createdAt).format('MMMM Do YYYY, h:mm:ss a');
+          element.updatedAt = moment(element.updatedAt).format('MMMM Do YYYY, h:mm:ss a');
+          element.endTime = moment(timeStamp).format('MMMM Do YYYY, h:mm:ss a');
           relustObj.push({...element,timeSpent:workingHours})
           console.log("hello");
         }
