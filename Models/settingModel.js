@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 var SettingModelSchema = new mongoose.Schema({
   companyID: { type: mongoose.Schema.Types.ObjectId },
@@ -7,14 +7,7 @@ var SettingModelSchema = new mongoose.Schema({
   key: String,
   value: Object,
   isActive:Boolean,
-  createdAt: Number,
-  updatedAt: Number,
-})
-
-const SettingModel = mongoose.model(
-  "SettingModel", SettingModelSchema
-);
-
-module.exports = SettingModel;
+},{timestamps:true})
+export default mongoose.model("SettingModel",SettingModelSchema)
 
 

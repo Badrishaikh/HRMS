@@ -32,8 +32,8 @@ var employeeSchema = new mongoose.Schema({
  locId:String,
   resetToken:String,
   // password:String,
-  // reportingManager: { type: mongoose.Schema.Types.ObjectId },
-  reportingManager:String,
+   reportingManager: { type: mongoose.Schema.Types.ObjectId },
+  //reportingManager:String,
   createdAt:Number,
   updatedAt:Number,
  

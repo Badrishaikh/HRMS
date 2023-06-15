@@ -1,5 +1,6 @@
 import { validateAuthKey, validateAdmin } from '../../middleware/jwtMiddleware.js';
 import holidayModel from "../../Models/holidayModel.js";
+import moment from 'moment';
 export const holiDay = [
     validateAuthKey,
     async (req, res) => {
@@ -23,10 +24,22 @@ export const holiDay = [
         //   return res.status(401).json({ message: "All fields are mandatory" });
   
         // }
+
+
+
+          var a = moment(endDate);//now
+          var b = moment(startDate);
+
+          const dfff=a.diff(b, 'minute') // 44700
+          console.log(dfff%60)
+          console.log(a.diff(b, 'hours')) // 745
+          console.log(a.diff(b, 'days')) // 31
+          console.log(a.diff(b, 'weeks')) // 4
+          const day=a.diff(b, 'days')
   
-        const user = await holidayModel.create({companyID:companyID,branchID, createdBy,  startDate,
+        const user = await holidayModel.create({companyID:companyID,branchID, createdBy:id,  startDate,
             endDate,
-            numOfDays,
+            numOfDays:day,
         isLeaveApplicable,
          });
   

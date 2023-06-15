@@ -7,6 +7,7 @@ import CompanyAuthRoutes from "./Routes/cmpany.js";
 import EmployeeAuthRoutes from "./Routes/employee.js";
 import LeaveAuthRoutes from "./Routes/leave.js";
 import HolidayAuthRoutes from "./Routes/holiday.js";
+import SettingAuthRoutes from "./Routes/setting.js";
 
 
 //const CompanyAuthRoutes = require('./Controllers/Company/routes');
@@ -20,6 +21,7 @@ app.use(CompanyAuthRoutes)
 app.use(EmployeeAuthRoutes)
 app.use(LeaveAuthRoutes)
 app.use(HolidayAuthRoutes)
+app.use(SettingAuthRoutes)
 // mongoose.set('strictQuery', false)
 mongoose
     .connect("mongodb+srv://fahim:VlC1J930kCjLfaGx@cluster0.qjlbx0h.mongodb.net/?retryWrites=true&w=majority", {

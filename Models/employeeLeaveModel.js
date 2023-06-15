@@ -1,8 +1,8 @@
 import mongoose from "mongoose"
 
 var employeeLeaveSchema = new mongoose.Schema({
-  //empID: { type: mongoose.Schema.Types.ObjectId },
-  empID:String,
+  emp_ID: { type: mongoose.Schema.Types.ObjectId },
+  // empID:String,
   branchID: { type: mongoose.Schema.Types.ObjectId },
   departmentID: { type: mongoose.Schema.Types.ObjectId },
   leaveTypeID: { type: mongoose.Schema.Types.ObjectId },
@@ -17,7 +17,7 @@ var employeeLeaveSchema = new mongoose.Schema({
   isApproved: Boolean,
   actionTakenBy: { type: mongoose.Schema.Types.ObjectId }, //leave aprove hr
   managers: [
-    { type: mongoose.Schema.Types.ObjectId }
+    { type: mongoose.Schema.Types.ObjectId } // kis ko leave notify or alert dena hain
   ],
   status: String,
 },{timestamps:true})
