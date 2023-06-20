@@ -169,12 +169,16 @@ export const employeeLeave = [
       var numOfDays = 1;
       var dateone = new Date(leaveStartDate)
       var datetw = new Date(leaveEndDate)
+      console.log(dateone, "jkjsjs")
       console.log(datetw, "jkjsjs")
       //var test= Datetime(datetw)
       //console.log(test)
       while (dateone < datetw) {
         numOfDays++;
-        if (dateone.getDay() == 0) {
+        console.log(numOfDays)
+        console.log(dateone.getDay() == 0)
+
+        if (dateone.getDay() == 0 ) {
           if (sandwichLeaveStatus == true) {
 
           } else {
@@ -202,10 +206,7 @@ export const employeeLeave = [
       if (user) {
 
         return res.json({
-          _id: user._id,
-          companyID: user.companyID,
-          branchID: user.branchID,
-          name: user.name,
+          user
 
 
         });

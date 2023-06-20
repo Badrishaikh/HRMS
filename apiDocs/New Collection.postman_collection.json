@@ -1,0 +1,851 @@
+{
+	"info": {
+		"_postman_id": "ab3e330c-3a98-4acb-ba6c-1aeac0e126a1",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27699745"
+	},
+	"item": [
+		{
+			"name": "localhost:9090/user/forgotpass/a5fb690c3e5be7d01b2c7d02874a5f0e865300bea76e16fd8a95728ec1f443f67f65d0441cacecdd975359fb7d14aec7?password=123",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/user/forgotpass/a5fb690c3e5be7d01b2c7d02874a5f0e865300bea76e16fd8a95728ec1f443f67f65d0441cacecdd975359fb7d14aec7?password=123",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"user",
+						"forgotpass",
+						"a5fb690c3e5be7d01b2c7d02874a5f0e865300bea76e16fd8a95728ec1f443f67f65d0441cacecdd975359fb7d14aec7"
+					],
+					"query": [
+						{
+							"key": "password",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/emp-create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZjMDUxYTIxODU5YTIyZDQ2ZTQ3ZiIsImNvbXBhbnlJRCI6IjY0ODZjMDUxYTIxODU5YTIyZDQ2ZTQ3ZCIsImVtcGlkIjoiU0dDL0tPTDIwMjMyNC8xIiwidXNlclR5cGUiOiJNYXN0ZXJBZG1pbiIsImlhdCI6MTY4NjU1OTEyMH0.LcffXmxwv24TRMx1axR75xC7P7TO5LtRNcSnmEUNtPA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "emp",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "testing12@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "primaryemail",
+							"value": "p@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "countryCode",
+							"value": "91",
+							"type": "text"
+						},
+						{
+							"key": "mobile",
+							"value": "9916654332",
+							"type": "text"
+						},
+						{
+							"key": "doj",
+							"value": "234",
+							"type": "text"
+						},
+						{
+							"key": "dob",
+							"value": "234",
+							"type": "text"
+						},
+						{
+							"key": "isWorkingToday",
+							"value": "true",
+							"type": "text"
+						},
+						{
+							"key": "todayLoginTime",
+							"value": "234",
+							"type": "text"
+						},
+						{
+							"key": "userType",
+							"value": "Employee",
+							"type": "text"
+						},
+						{
+							"key": "employmentType",
+							"value": "dev",
+							"type": "text"
+						},
+						{
+							"key": "locId",
+							"value": "BLR",
+							"type": "text"
+						},
+						{
+							"key": "reportingManager",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "branchID",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "departmentID",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/emp-create",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"emp-create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/login",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/leave-create",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZjMDUxYTIxODU5YTIyZDQ2ZTQ3ZiIsImNvbXBhbnlJRCI6IjY0ODZjMDUxYTIxODU5YTIyZDQ2ZTQ3ZCIsImVtcGlkIjoiU0dDL0tPTDIwMjMyNC8xIiwidXNlclR5cGUiOiJNYXN0ZXJBZG1pbiIsImlhdCI6MTY4NjU2NDY3NX0.tt2XMpbmmusZuAKYR091-BGWrnfFdIFxYDS_WLbyP2o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "branchID",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "Earned Leave",
+							"type": "text"
+						},
+						{
+							"key": "noOfLeave",
+							"value": "12",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/leave-create",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"leave-create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/create-branch",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODZjMDUxYTIxODU5YTIyZDQ2ZTQ3ZiIsImNvbXBhbnlJRCI6IjY0ODZjMDUxYTIxODU5YTIyZDQ2ZTQ3ZCIsImVtcGlkIjoiU0dDL0tPTDIwMjMyNC8xIiwidXNlclR5cGUiOiJNYXN0ZXJBZG1pbiIsImlhdCI6MTY4NjU2NDY3NX0.tt2XMpbmmusZuAKYR091-BGWrnfFdIFxYDS_WLbyP2o",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "companyID",
+							"value": "6486c051a21859a22d46e47d",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "jharkhand",
+							"type": "text"
+						},
+						{
+							"key": "countryCode",
+							"value": "91",
+							"type": "text"
+						},
+						{
+							"key": "mobile",
+							"value": "9916654335",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "jh@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "jh",
+							"type": "text"
+						},
+						{
+							"key": "noOfEmp",
+							"value": "50",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/create-branch",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"create-branch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/create-department",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODgyMWRhMjU1NjMyNmRkN2M2NzYwZSIsImNvbXBhbnlJRCI6IjY0ODgyMWQ5MjU1NjMyNmRkN2M2NzYwYyIsInVzZXJUeXBlIjoiTWFzdGVyQWRtaW4iLCJpYXQiOjE2ODY2NDM0NDN9.gH2IzVYh1y7zJxfLlqCFOJyTfX9ePqrFg0dZRF1WT9c",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "companyID",
+							"value": "648821d92556326dd7c6760c",
+							"type": "text"
+						},
+						{
+							"key": "branchID",
+							"value": "648823682556326dd7c67613",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "dev",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/create-department",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"create-department"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/leave-apply",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODgyNmQ1MjU1NjMyNmRkN2M2NzYyNSIsImNvbXBhbnlJRCI6IjY0ODgyMWQ5MjU1NjMyNmRkN2M2NzYwYyIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC8zIiwidXNlclR5cGUiOiJIUiIsImJyYW5jaElEIjoiNjQ4ODIzNjgyNTU2MzI2ZGQ3YzY3NjEzIiwiZGVwYXJ0bWVudElEIjoiNjQ4ODI0NDIyNTU2MzI2ZGQ3YzY3NjE1IiwiaWF0IjoxNjg2NjQ0NDk4fQ.6j8s2xRR0Cige0W7jhGd_6vgdj175BK3lS5jlHhy-rU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"leaveTypeID\":\"6488293b81cc82f5ebc7d2ae\",\r\n \"leaveReason\":\"fever\",\r\n \"leaveStartDate\":\"2023-6-20\",\r\n \"leaveEndDate\":\"2023-6-25\",\r\n \"leaveDoc\":\"leaveDoc\",\r\n \"isDocMandatery\":true,\r\n \"numberOfDays\":6,\r\n \"isApproved\":true,\r\n \"actionTakenBy\":\"64870d9d444a5d24e7a26f02\",\r\n \"managers\":[\"64870d9d444a5d24e7a26f02\"],\r\n \"status\":\"pending\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/leave-apply",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"leave-apply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/holiday",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODk5MjVjMzVkN2M2NTNlMTZlYzhmYyIsImNvbXBhbnlJRCI6IjY0ODgyMWQ5MjU1NjMyNmRkN2M2NzYwYyIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC80IiwidXNlclR5cGUiOiJIUiIsImJyYW5jaElEIjoiNjQ4ODIzNjgyNTU2MzI2ZGQ3YzY3NjEzIiwiZGVwYXJ0bWVudElEIjoiNjQ4ODI0NDIyNTU2MzI2ZGQ3YzY3NjE1IiwiaWF0IjoxNjg2ODA4ODMxfQ.or30TTmMFZKvUTzymdOmFUf0CSVzJSgZmifzE7ahGMI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "branchID",
+							"value": "648823682556326dd7c67613",
+							"type": "text"
+						},
+						{
+							"key": "createdBy",
+							"value": "648826d52556326dd7c67625",
+							"type": "text"
+						},
+						{
+							"key": "startDate",
+							"value": "2023-07-1",
+							"type": "text"
+						},
+						{
+							"key": "endDate",
+							"value": "2023-07-5",
+							"type": "text"
+						},
+						{
+							"key": "numOfDays",
+							"value": "50",
+							"type": "text"
+						},
+						{
+							"key": "isLeaveApplicable",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/holiday",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"holiday"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/emp-attendance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODk5MjVjMzVkN2M2NTNlMTZlYzhmYyIsImNvbXBhbnlJRCI6IjY0ODgyMWQ5MjU1NjMyNmRkN2M2NzYwYyIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC80IiwidXNlclR5cGUiOiJIUiIsImJyYW5jaElEIjoiNjQ4ODIzNjgyNTU2MzI2ZGQ3YzY3NjEzIiwiZGVwYXJ0bWVudElEIjoiNjQ4ODI0NDIyNTU2MzI2ZGQ3YzY3NjE1IiwiaWF0IjoxNjg2ODA4ODMxfQ.or30TTmMFZKvUTzymdOmFUf0CSVzJSgZmifzE7ahGMI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "entryType",
+							"value": "OfficeOFF",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/emp-attendance",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"emp-attendance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/breack-time-setting",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODk5MjVjMzVkN2M2NTNlMTZlYzhmYyIsImNvbXBhbnlJRCI6IjY0ODgyMWQ5MjU1NjMyNmRkN2M2NzYwYyIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC80IiwidXNlclR5cGUiOiJIUiIsImJyYW5jaElEIjoiNjQ4ODIzNjgyNTU2MzI2ZGQ3YzY3NjEzIiwiZGVwYXJ0bWVudElEIjoiNjQ4ODI0NDIyNTU2MzI2ZGQ3YzY3NjE1IiwiaWF0IjoxNjg2ODk0NTk3fQ.WA_3JQoUiJhbVvlOIBRrpkeaSw25183VpXGDCHfAH7E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "key",
+							"value": "breakTimeStatus",
+							"type": "text"
+						},
+						{
+							"key": "value",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/breack-time-setting",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"breack-time-setting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/emp-get-attendance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODk5MjVjMzVkN2M2NTNlMTZlYzhmYyIsImNvbXBhbnlJRCI6IjY0ODgyMWQ5MjU1NjMyNmRkN2M2NzYwYyIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC80IiwidXNlclR5cGUiOiJIUiIsImJyYW5jaElEIjoiNjQ4ODIzNjgyNTU2MzI2ZGQ3YzY3NjEzIiwiZGVwYXJ0bWVudElEIjoiNjQ4ODI0NDIyNTU2MzI2ZGQ3YzY3NjE1IiwiaWF0IjoxNjg2ODA4ODMxfQ.or30TTmMFZKvUTzymdOmFUf0CSVzJSgZmifzE7ahGMI",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/emp-get-attendance",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"emp-get-attendance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/attendace-setting-time",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODk5MjVjMzVkN2M2NTNlMTZlYzhmYyIsImNvbXBhbnlJRCI6IjY0ODgyMWQ5MjU1NjMyNmRkN2M2NzYwYyIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC80IiwidXNlclR5cGUiOiJIUiIsImJyYW5jaElEIjoiNjQ4ODIzNjgyNTU2MzI2ZGQ3YzY3NjEzIiwiZGVwYXJ0bWVudElEIjoiNjQ4ODI0NDIyNTU2MzI2ZGQ3YzY3NjE1IiwiaWF0IjoxNjg2ODk0NTk3fQ.WA_3JQoUiJhbVvlOIBRrpkeaSw25183VpXGDCHfAH7E",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "entrytype",
+							"value": "BreakTime",
+							"type": "text"
+						},
+						{
+							"key": "time",
+							"value": "20",
+							"type": "text"
+						},
+						{
+							"key": "status",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/attendace-setting-time",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"attendace-setting-time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/get-setting-time",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ODk5MmE5MzVkN2M2NTNlMTZlYzkwMCIsImNvbXBhbnlJRCI6IjY0ODgyMWQ5MjU1NjMyNmRkN2M2NzYwYyIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC81IiwidXNlclR5cGUiOiJFTVAiLCJicmFuY2hJRCI6IjY0ODgyMzY4MjU1NjMyNmRkN2M2NzYxMyIsImRlcGFydG1lbnRJRCI6IjY0ODgyNDQyMjU1NjMyNmRkN2M2NzYxNSIsImlhdCI6MTY4NjkwNzY5Mn0.qsUnDVQaLx7oAUc9ayvCQHFh5tXZI967N7j60mnInfU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/get-setting-time",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"get-setting-time"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/create-company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "ftc",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ftc@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "mobile",
+							"value": "9916654335",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "kolkata",
+							"type": "text"
+						},
+						{
+							"key": "countryCode",
+							"value": "91",
+							"type": "text"
+						},
+						{
+							"key": "shortCode",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "website",
+							"value": "ftc.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/create-company",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"create-company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/emp-branch",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTE0OWM4NTc3OGE2MTdkMzgzYzE3NiIsImNvbXBhbnlJRCI6IjY0OTE0NzBjNTc3OGE2MTdkMzgzYzE2MSIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC8zIiwidXNlclR5cGUiOiJFTVAiLCJicmFuY2hJRCI6IjY0OTE0ODUyNTc3OGE2MTdkMzgzYzE2OCIsImRlcGFydG1lbnRJRCI6IjY0OTE0ODlkNTc3OGE2MTdkMzgzYzE2YSIsImlhdCI6MTY4NzI0MzIzMn0.3ikkacMM9SS6gq1IsrR0DSATmXJKmjKv2Y_IQ294qOM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "emp_ID",
+							"value": "6489903a35d7c653e16ec8f4",
+							"type": "text"
+						},
+						{
+							"key": "branchID",
+							"value": "648823682556326dd7c67613",
+							"type": "text"
+						},
+						{
+							"key": "departmentID",
+							"value": "6491489d5778a617d383c16a",
+							"type": "text"
+						},
+						{
+							"key": "hasAccess",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/emp-branch",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"emp-branch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/leave-status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTE0OWM4NTc3OGE2MTdkMzgzYzE3NiIsImNvbXBhbnlJRCI6IjY0OTE0NzBjNTc3OGE2MTdkMzgzYzE2MSIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC8zIiwidXNlclR5cGUiOiJFTVAiLCJicmFuY2hJRCI6IjY0OTE0ODUyNTc3OGE2MTdkMzgzYzE2OCIsImRlcGFydG1lbnRJRCI6IjY0OTE0ODlkNTc3OGE2MTdkMzgzYzE2YSIsImlhdCI6MTY4NzI0MzIzMn0.3ikkacMM9SS6gq1IsrR0DSATmXJKmjKv2Y_IQ294qOM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "status",
+							"value": "approved",
+							"type": "text"
+						},
+						{
+							"key": "id",
+							"value": "64914bfb5778a617d383c180",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/leave-status",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"leave-status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:9090/get-all-leave",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0OTE0OWM4NTc3OGE2MTdkMzgzYzE3NiIsImNvbXBhbnlJRCI6IjY0OTE0NzBjNTc3OGE2MTdkMzgzYzE2MSIsImVtcElEIjoiU0dDL0JMUjIwMjMyNC8zIiwidXNlclR5cGUiOiJFTVAiLCJicmFuY2hJRCI6IjY0OTE0ODUyNTc3OGE2MTdkMzgzYzE2OCIsImRlcGFydG1lbnRJRCI6IjY0OTE0ODlkNTc3OGE2MTdkMzgzYzE2YSIsImlhdCI6MTY4NzI0NTUzNn0.vvH3mYCwq5rwj5yDzopH5ADaIWjDDG3ZvFUConFPoIs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "status",
+						"value": "approved",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "status",
+							"value": "pendding",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:9090/get-all-leave",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"get-all-leave"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
