@@ -90,6 +90,7 @@ export const getAllLeave =[
    validateAuthKey,
        async (req, res) => {
         const { id } = req.user;
+        console.log(id)
         const st=req.body.status;
       
         try {

@@ -7,6 +7,8 @@ import attendanceModel from "../../Models/attendanceModel.js"
 import { validateAuthKey, validateAdmin } from '../../middleware/jwtMiddleware.js';
 import empleaveModel from "../../Models/employeeLeaveModel.js";
 import settingModel from "../../Models/settingModel.js";
+import timerSettingModel from "../../Models/timerSettingModel.js";
+import attendanceHistoryModel from "../../Models/attendanceHistoryModel.js";
 
 export const login = async (req, res) => {
   const { email, password } = req.body;
@@ -278,7 +280,7 @@ export const employeeBranch = [
 
   }];
 
-//----AttendanceModel---
+//----AttendanceHistoryModel---
 export const employeeAttendance = [
   validateAuthKey,
   async (req, res) => {
@@ -298,16 +300,26 @@ export const employeeAttendance = [
       //   return res.status(401).json({ message: "All fields are mandatory" });
 
       // }
+      if (entryType == 'OfficeIN') {
+
+        const attendaceInstance = new attendanceModel({
+          emp_ID: id,
+          branchID: branchID,
+          departmentID: departmentID,
+          companyID: companyID,
+          dayStartedOn: new Date(),
+        });
+        await attendaceInstance.save();
+
+      }
 
       // const user = await empLeaveModel.create({empID, branchID,departmentID, hasAccess});
-      const result = new attendanceModel({
+      const result = new attendanceHistoryModel({
         emp_ID: id,
         branchID: branchID,
         departmentID: departmentID,
         companyID: companyID,
         entryType: entryType,
-
-
       })
       result.save()
         .then(emp => {
@@ -343,6 +355,7 @@ export const employeeAttendance = [
 export const getAttendance = [
   validateAuthKey,
   async (req, res) => {
+    console.log("testing.....")
     const { id } = req.user;
     let dt = new Date();
     let today = dt.getFullYear() + "-" + (dt.getMonth() + 1).toString().padStart(2, '0') + "-" + dt.getDate().toString().padStart(2, '0');
@@ -352,7 +365,7 @@ export const getAttendance = [
 
 
     try {
-      const results = await attendanceModel.find({
+      const results = await attendanceHistoryModel.find({
         emp_ID: id,
         createdAt: {
           $gt: new Date(today + "T00:00:00"),
@@ -379,7 +392,7 @@ export const getAttendance = [
       //  }
       let relustObj = [];
       for (let i = 0; i < results.length; i++) {
-        const element = {...results[i]._doc};
+        const element = { ...results[i]._doc };
         console.log(element);
         if (element.entryType == "OfficeIN") {
           let timeStamp = new Date();
@@ -387,53 +400,56 @@ export const getAttendance = [
             timeStamp = results[results.length - 1].createdAt;
           }
           let workingHours = calculateTimeDiff(new Date(element.createdAt), timeStamp);
+
           element.createdAt = moment(element.createdAt).format('MMMM Do YYYY, h:mm:ss a');
           element.updatedAt = moment(element.updatedAt).format('MMMM Do YYYY, h:mm:ss a');
           element.endTime = moment(timeStamp).format('MMMM Do YYYY, h:mm:ss a');
-          relustObj.push({...element,timeSpent:workingHours})
+          relustObj.push({ ...element, timeSpent: workingHours, endTime: timeStamp })
           console.log("hello");
-        }else if (element.entryType == "BreakON") {
+        } else if (element.entryType == "BreakON") {
           let timeStamp = new Date();
-          if(results[i+1])
-          if (results[i+1].entryType == "BreakOFF") {
-            timeStamp = results[i+1].createdAt;
-          }
+          if (results[i + 1])
+            if (results[i + 1].entryType == "BreakOFF") {
+              timeStamp = results[i + 1].createdAt;
+            }
           let workingHours = calculateTimeDiff(new Date(element.createdAt), timeStamp);
           element.createdAt = moment(element.createdAt).format('MMMM Do YYYY, h:mm:ss a');
           element.updatedAt = moment(element.updatedAt).format('MMMM Do YYYY, h:mm:ss a');
           element.endTime = moment(timeStamp).format('MMMM Do YYYY, h:mm:ss a');
-          relustObj.push({...element,timeSpent:workingHours })
+          relustObj.push({ ...element, timeSpent: workingHours })
           console.log("hello");
         }
         else if (element.entryType == "LunchON") {
           let timeStamp = new Date();
-          if(results[i+1])
-          if (results[i+1].entryType == "LunchOFF") {
-            timeStamp = results[i+1].createdAt;
-          }
+          if (results[i + 1])
+            if (results[i + 1].entryType == "LunchOFF") {
+              timeStamp = results[i + 1].createdAt;
+            }
           let workingHours = calculateTimeDiff(new Date(element.createdAt), timeStamp);
+          // const lal=moment(workingHours).format('LT');
           element.createdAt = moment(element.createdAt).format('MMMM Do YYYY, h:mm:ss a');
           element.updatedAt = moment(element.updatedAt).format('MMMM Do YYYY, h:mm:ss a');
           element.endTime = moment(timeStamp).format('MMMM Do YYYY, h:mm:ss a');
-          relustObj.push({...element,timeSpent:workingHours })
+          relustObj.push({ ...element, timeSpent: workingHours })
           console.log("hello");
-        }else if (element.entryType == "OfficeOFF") {
+        } else if (element.entryType == "OfficeOFF") {
           let timeStamp = new Date();
           if (results[0].entryType == "OfficeIN") {
             timeStamp = results[0].createdAt;
           }
-         
-          let workingHours = calculateTimeDiff(timeStamp,new Date(element.createdAt));
+
+          let workingHours = calculateTimeDiff(timeStamp, new Date(element.createdAt));
+          //const lal=moment(workingHours).format('LT');
           element.createdAt = moment(element.createdAt).format('MMMM Do YYYY, h:mm:ss a');
           element.updatedAt = moment(element.updatedAt).format('MMMM Do YYYY, h:mm:ss a');
           element.endTime = moment(timeStamp).format('MMMM Do YYYY, h:mm:ss a');
-          relustObj.push({...element,timeSpent:workingHours})
+          relustObj.push({ ...element, timeSpent: workingHours })
           console.log("hello");
         }
       }
 
       if (relustObj) {
-        return res.json({ withWorkingHour:relustObj , listAll:results})
+        return res.json({ withWorkingHour: relustObj, listAll: results })
       }
     } catch (err) {
       throw err;
@@ -453,3 +469,114 @@ export const calculateTimeDiff = (time1, time2) => {
   const timeInminutes = Math.ceil((diff / 1000) / 60);
   return timeInminutes
 }
+
+//---logout---
+export const logout = [
+  validateAuthKey,
+  async (req, res) => {
+   // const { id } = req.user; 
+    const { id } = req.user;
+    const { companyID } = req.user;
+    const { emp_ID } = req.user;
+    const { branchID } = req.user;
+    const { departmentID } = req.user;
+
+    let dt = new Date();
+    let today = dt.getFullYear() + "-" + (dt.getMonth() + 1).toString().padStart(2, '0') + "-" + dt.getDate().toString().padStart(2, '0');
+    dt.setDate(dt.getDate() + 1)
+    let nextDay = dt.getFullYear() + "-" + (dt.getMonth() + 1).toString().padStart(2, '0') + "-" + dt.getDate().toString().padStart(2, '0');
+
+
+    //attandence histry OfficeOFF
+
+
+    // const user = await attendanceModel.findByIdAndUpdate(id,
+    //     {dayEndOn:new Date},
+    //   { new: true });
+    //   const tr= new Date;
+    //   console.log(tr,"update",user)
+
+    const timerSettings = await timerSettingModel.findOne({ key: 'breakTimeStatus' });
+    console.log(timerSettings,"testing...");
+    const ahmInstance = new attendanceHistoryModel({
+      emp_ID: id,
+      branchID: branchID,
+      departmentID: departmentID,
+      companyID: companyID,
+      entryType: "OfficeOFF",
+    });
+    await ahmInstance.save();
+    let results = await attendanceHistoryModel.find({emp_ID:id, createdAt: {
+    //   $gt: new Date(today + "T00:00:00"),
+    //   $lt: new Date(nextDay + "T00:00:00"),
+    // },})
+    
+      $gt: new Date(today + "T00:00:00"),
+      $lt: new Date(nextDay + "T00:00:00"),
+    },
+  });
+
+    
+    try {
+      let relustObj = [];
+      let totalTimeSpent = 0;
+      let actualWorkTime = 0;
+      let totalBreakTime = 0;
+      for (let i = 0; i < results.length; i++) {
+        const element = { ...results[i]._doc };
+        if (element.entryType == "OfficeIN") {
+          let timeStamp = new Date();
+          if (results[results.length - 1].entryType == "OfficeOFF") {
+            timeStamp = results[results.length - 1].createdAt;
+          }
+          totalTimeSpent += calculateTimeDiff(new Date(element.createdAt), timeStamp);
+        
+
+        } else if (element.entryType == "BreakON") {
+          let timeStamp = new Date();
+          if (results[i + 1])
+            if (results[i + 1].entryType == "BreakOFF") {
+              timeStamp = results[i + 1].createdAt;
+            }
+          totalBreakTime += calculateTimeDiff(new Date(element.createdAt), timeStamp);
+          
+        }
+        else if (element.entryType == "LunchON") {
+          let timeStamp = new Date();
+          if (results[i + 1])
+            if (results[i + 1].entryType == "LunchOFF") {
+              timeStamp = results[i + 1].createdAt;
+            }
+          totalBreakTime += calculateTimeDiff(new Date(element.createdAt), timeStamp);
+
+        }
+      }
+
+      actualWorkTime = totalTimeSpent - totalBreakTime;
+      let dt = new Date();
+      let today = dt.getFullYear() + "-" + (dt.getMonth() + 1).toString().padStart(2, '0') + "-" + dt.getDate().toString().padStart(2, '0');
+      dt.setDate(dt.getDate() + 1)
+      let nextDay = dt.getFullYear() + "-" + (dt.getMonth() + 1).toString().padStart(2, '0') + "-" + dt.getDate().toString().padStart(2, '0');
+
+      const attandenceInstance = await attendanceModel.findOne({
+        emp_ID: id,
+        createdAt: {
+          $gt: new Date(today + "T00:00:00"),
+          $lt: new Date(nextDay + "T00:00:00"),
+        },
+      }).sort({ createdAt: 1 });
+      attandenceInstance.endTime = new Date();
+      attandenceInstance.totalTimeSpent = totalTimeSpent;
+      attandenceInstance.actualWorkTime = actualWorkTime;
+      attandenceInstance.totalBreakTime = totalBreakTime;
+      await attandenceInstance.save(); 
+      if(attandenceInstance){
+        return res.json({attandenceInstance})
+      }
+
+    } catch (err) {
+      throw err;
+    }
+
+  }]
+

@@ -5,10 +5,7 @@ var AttendanceModelSchema = new mongoose.Schema({
   branchID: { type: mongoose.Schema.Types.ObjectId },
   departmentID: { type: mongoose.Schema.Types.ObjectId },
   emp_ID: { type: mongoose.Schema.Types.ObjectId },
-  dayStartedOn:Date,
-  dayEndOn:Date,
-  totalTimeSpent:Number,
-  actualWorkTime:Number,
-  totalBreakTime:Number,
+  entryType:String,
+  
 },{timestamps:true})
-export default mongoose.model("AttendanceModel",AttendanceModelSchema)
+export default mongoose.model("AttendanceHistoryModel",AttendanceModelSchema)
